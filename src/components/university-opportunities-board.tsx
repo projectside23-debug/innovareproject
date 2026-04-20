@@ -32,6 +32,17 @@ const ecosystemThemes: Record<
     badgeClass: string;
   }
 > = {
+  general: {
+    cardClass:
+      "border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#111827_0%,#213547_52%,#3d5367_100%)] shadow-[0_24px_70px_rgba(17,24,39,0.18)]",
+    overlayClass:
+      "bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.1),transparent_46%)]",
+    titleClass: "text-white",
+    metaClass: "text-[rgba(255,255,255,0.82)]",
+    bodyClass: "text-[rgba(255,255,255,0.76)]",
+    badgeClass:
+      "border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.16)] text-white"
+  },
   duke: {
     cardClass:
       "border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(135deg,#001a57_0%,#003087_58%,#275dbe_100%)] shadow-[0_24px_70px_rgba(0,39,102,0.2)]",
@@ -248,7 +259,7 @@ export function UniversityOpportunitiesBoard() {
                 className="cta-dark rounded-full px-5 py-3 text-sm transition"
                 onClick={() =>
                   openModal(
-                    selectedEcosystemId !== "all" ? selectedEcosystemId : ecosystemSeedData[0]?.id
+                    selectedEcosystemId !== "all" ? selectedEcosystemId : "general"
                   )
                 }
               >

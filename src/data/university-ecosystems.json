@@ -1,5 +1,12 @@
 [
   {
+    "id": "general",
+    "name": "General",
+    "summary": "Cross-campus opportunities for founders, operators, researchers, and builders that are not tied to one university.",
+    "focus": "Open calls, remote projects, startup help, collaborations",
+    "region": "Remote / Multi-campus"
+  },
+  {
     "id": "duke",
     "name": "Duke",
     "summary": "Builders, researchers, founders, and student operators shaping early experiments, ventures, and interdisciplinary collaborations.",
