@@ -1,0 +1,10 @@
+.DS_Store
+.next
+node_modules
+.env
+.env.local
+.env*.local
+npm-debug.log*
+*.zip
+*.pyc
+__pycache__

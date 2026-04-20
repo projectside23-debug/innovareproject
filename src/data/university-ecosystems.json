@@ -1,0 +1,44 @@
+[
+  {
+    "id": "duke",
+    "name": "Duke",
+    "summary": "Builders, researchers, founders, and student operators shaping early experiments, ventures, and interdisciplinary collaborations.",
+    "focus": "Health, policy, data, entrepreneurship",
+    "region": "Durham, NC"
+  },
+  {
+    "id": "nyu",
+    "name": "NYU",
+    "summary": "A fast-moving urban ecosystem spanning founders, creators, labs, investor networks, and student-led initiatives.",
+    "focus": "Startups, finance, media, civic innovation",
+    "region": "New York, NY"
+  },
+  {
+    "id": "columbia",
+    "name": "Columbia",
+    "summary": "Research-heavy teams and venture-minded builders working across science, media, policy, and applied technology.",
+    "focus": "Research, policy, deep tech, media",
+    "region": "New York, NY"
+  },
+  {
+    "id": "penn",
+    "name": "Penn",
+    "summary": "An ecosystem where business, biotech, design, and operator talent intersect around practical new ventures.",
+    "focus": "Biotech, consumer, fintech, design",
+    "region": "Philadelphia, PA"
+  },
+  {
+    "id": "berkeley",
+    "name": "Berkeley",
+    "summary": "Founder energy, technical depth, and mission-driven building across labs, startups, and student organizations.",
+    "focus": "Climate, engineering, AI, public research",
+    "region": "Berkeley, CA"
+  },
+  {
+    "id": "northwestern",
+    "name": "Northwestern",
+    "summary": "A collaborative base for operators, researchers, and builders who want to test serious ideas with practical teams.",
+    "focus": "Healthcare, media, operations, venture",
+    "region": "Evanston, IL"
+  }
+]
