@@ -91,19 +91,20 @@ export function PostOpportunityModal({
       setError("Description is required.");
       return;
     }
-    if (!normalizeWebsite(formState.applicationLink)) {
-      setError("Please include a valid application link.");
-      return;
-    }
     if (!formState.contactEmail.trim()) {
       setError("Contact email is required.");
+      return;
+    }
+    const normalizedApplicationLink = normalizeWebsite(formState.applicationLink);
+    if (formState.applicationLink.trim() && !normalizedApplicationLink) {
+      setError("Please use a valid application link or leave it blank.");
       return;
     }
 
     onSubmit({
       ...formState,
       website: normalizeWebsite(formState.website),
-      applicationLink: normalizeWebsite(formState.applicationLink)
+      applicationLink: normalizedApplicationLink
     });
     onClose();
   }
@@ -197,11 +198,11 @@ export function PostOpportunityModal({
         </label>
 
         <label className="grid gap-2">
-          <span className="text-sm text-[var(--ink-soft)]">Application link</span>
+          <span className="text-sm text-[var(--ink-soft)]">Application link optional</span>
           <input
             className="form-field"
             onChange={(event) => update("applicationLink", event.target.value)}
-            placeholder="https://example.com/apply"
+            placeholder="https://example.com/apply or leave blank"
             value={formState.applicationLink}
           />
         </label>

@@ -316,14 +316,23 @@ export function UniversityOpportunitiesBoard() {
                     </div>
 
                     <div className="mt-5 flex flex-wrap gap-3">
-                      <a
-                        className="cta-dark rounded-full px-4 py-2.5 text-sm transition"
-                        href={opportunity.applicationLink}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        Apply
-                      </a>
+                      {opportunity.applicationLink ? (
+                        <a
+                          className="cta-dark rounded-full px-4 py-2.5 text-sm transition"
+                          href={opportunity.applicationLink}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Apply
+                        </a>
+                      ) : (
+                        <a
+                          className="cta-dark rounded-full px-4 py-2.5 text-sm transition"
+                          href={`mailto:${opportunity.contactEmail}`}
+                        >
+                          Contact to apply
+                        </a>
+                      )}
                       {opportunity.website ? (
                         <a
                           className="cta-light rounded-full px-4 py-2.5 text-sm transition hover:bg-white"
