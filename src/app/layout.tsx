@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNavbar } from "@/components/site-navbar";
@@ -29,6 +30,7 @@ export default function RootLayout({
           <main>{children}</main>
           <SiteFooter />
         </div>
+        <Analytics />
       </body>
     </html>
   );
