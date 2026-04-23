@@ -1,4 +1,4 @@
-import { CrmRecord } from "@/types";
+import { CrmRecord, UniversityOpportunity, UniversityOpportunityInput } from "@/types";
 
 export type JoinSession = {
   id?: string;
@@ -131,4 +131,24 @@ export async function deleteCrmRecord(recordId: string) {
     method: "DELETE"
   });
   await readJsonResponse<{ ok: true }>(response);
+}
+
+export async function fetchUniversityOpportunities() {
+  const response = await fetch("/api/university-opportunities", {
+    cache: "no-store"
+  });
+  const data = await readJsonResponse<{ opportunities: UniversityOpportunity[] }>(response);
+  return data.opportunities;
+}
+
+export async function publishUniversityOpportunity(input: UniversityOpportunityInput) {
+  const response = await fetch("/api/university-opportunities", {
+    body: JSON.stringify(input),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  });
+  const data = await readJsonResponse<{ opportunity: UniversityOpportunity }>(response);
+  return data.opportunity;
 }

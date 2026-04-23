@@ -46,3 +46,16 @@ CREATE TABLE IF NOT EXISTS crm_records (
 CREATE INDEX IF NOT EXISTS crm_records_user_id_idx ON crm_records(user_id);
 CREATE INDEX IF NOT EXISTS crm_records_status_idx ON crm_records(status);
 CREATE INDEX IF NOT EXISTS crm_records_source_type_idx ON crm_records(source_type);
+
+CREATE TABLE IF NOT EXISTS university_opportunities (
+  id text PRIMARY KEY,
+  user_id uuid REFERENCES app_users(id) ON DELETE SET NULL,
+  ecosystem_id text NOT NULL,
+  data jsonb NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS university_opportunities_user_id_idx ON university_opportunities(user_id);
+CREATE INDEX IF NOT EXISTS university_opportunities_ecosystem_id_idx ON university_opportunities(ecosystem_id);
+CREATE INDEX IF NOT EXISTS university_opportunities_created_at_idx ON university_opportunities(created_at DESC);

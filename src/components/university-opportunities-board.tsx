@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 
 import ecosystemsSeed from "@/data/university-ecosystems.json";
 import opportunitiesSeed from "@/data/university-opportunities.json";
-import {
-  UNIVERSITY_OPPORTUNITIES_STORAGE_KEY,
-  createUniversityOpportunityFromInput,
-  loadStoredItems,
-  saveStoredItems
-} from "@/lib/utils";
+import { fetchUniversityOpportunities, publishUniversityOpportunity } from "@/lib/auth";
 import {
   UniversityEcosystem,
   UniversityOpportunity,
@@ -116,16 +111,40 @@ export function UniversityOpportunitiesBoard() {
   const [selectedEcosystemId, setSelectedEcosystemId] = useState<string>("all");
   const [postingEcosystemId, setPostingEcosystemId] = useState<string | undefined>(undefined);
   const [isPostOpportunityOpen, setIsPostOpportunityOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
-    setUserOpportunities(
-      loadStoredItems<UniversityOpportunity>(UNIVERSITY_OPPORTUNITIES_STORAGE_KEY)
-    );
+    let isMounted = true;
+
+    fetchUniversityOpportunities()
+      .then((opportunities) => {
+        if (!isMounted) {
+          return;
+        }
+
+        setUserOpportunities(opportunities);
+        setLoadError("");
+      })
+      .catch((error) => {
+        if (!isMounted) {
+          return;
+        }
+
+        setUserOpportunities([]);
+        setLoadError(error instanceof Error ? error.message : "Unable to load shared opportunities.");
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
-
-  useEffect(() => {
-    saveStoredItems(UNIVERSITY_OPPORTUNITIES_STORAGE_KEY, userOpportunities);
-  }, [userOpportunities]);
 
   const allOpportunities = [...userOpportunities, ...opportunitySeedData].sort(
     (left, right) => new Date(right.postedAt).getTime() - new Date(left.postedAt).getTime()
@@ -141,8 +160,10 @@ export function UniversityOpportunitiesBoard() {
     setIsPostOpportunityOpen(true);
   }
 
-  function handleSubmit(input: UniversityOpportunityInput) {
-    setUserOpportunities((current) => [createUniversityOpportunityFromInput(input), ...current]);
+  async function handleSubmit(input: UniversityOpportunityInput) {
+    const opportunity = await publishUniversityOpportunity(input);
+    setUserOpportunities((current) => [opportunity, ...current.filter((entry) => entry.id !== opportunity.id)]);
+    setSubmitError("");
   }
 
   return (
@@ -267,6 +288,18 @@ export function UniversityOpportunitiesBoard() {
               </button>
             </div>
 
+            {loadError ? (
+              <div className="mt-6 rounded-[1.25rem] border border-[#efc1b5] bg-[#fff3ef] px-4 py-3 text-sm text-[#8d3f27]">
+                {loadError}
+              </div>
+            ) : null}
+
+            {submitError ? (
+              <div className="mt-4 rounded-[1.25rem] border border-[#efc1b5] bg-[#fff3ef] px-4 py-3 text-sm text-[#8d3f27]">
+                {submitError}
+              </div>
+            ) : null}
+
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               <div className="rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.62)] p-4">
                 <p className="text-3xl font-semibold text-[var(--ink)]">{allOpportunities.length}</p>
@@ -282,7 +315,16 @@ export function UniversityOpportunitiesBoard() {
               </div>
             </div>
 
-            {visibleOpportunities.length > 0 ? (
+            {isLoading ? (
+              <div className="mt-8 rounded-[1.8rem] border border-[var(--line)] bg-[rgba(255,255,255,0.72)] p-8 text-center">
+                <p className="display-title text-3xl font-semibold text-[var(--ink)]">
+                  Loading opportunities
+                </p>
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[var(--ink-soft)]">
+                  Pulling shared roles from the live Innovare database.
+                </p>
+              </div>
+            ) : visibleOpportunities.length > 0 ? (
               <div className="mt-8 grid gap-4">
                 {visibleOpportunities.map((opportunity) => (
                   <article className="surface-panel rounded-[1.5rem] p-5" key={opportunity.id}>
@@ -372,7 +414,16 @@ export function UniversityOpportunitiesBoard() {
         ecosystems={ecosystemSeedData}
         initialEcosystemId={postingEcosystemId}
         onClose={() => setIsPostOpportunityOpen(false)}
-        onSubmit={handleSubmit}
+        onSubmit={async (input) => {
+          try {
+            await handleSubmit(input);
+          } catch (error) {
+            setSubmitError(
+              error instanceof Error ? error.message : "Unable to publish this opportunity."
+            );
+            throw error;
+          }
+        }}
         open={isPostOpportunityOpen}
       />
     </>

@@ -11,7 +11,7 @@ type PostOpportunityModalProps = {
   ecosystems: UniversityEcosystem[];
   initialEcosystemId?: string;
   onClose: () => void;
-  onSubmit: (input: UniversityOpportunityInput) => void;
+  onSubmit: (input: UniversityOpportunityInput) => void | Promise<void>;
 };
 
 export function PostOpportunityModal({
@@ -78,7 +78,7 @@ export function PostOpportunityModal({
     }));
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!formState.projectRole.trim()) {
       setError("Project role is required.");
       return;
@@ -101,7 +101,7 @@ export function PostOpportunityModal({
       return;
     }
 
-    onSubmit({
+    await onSubmit({
       ...formState,
       website: normalizeWebsite(formState.website),
       applicationLink: normalizedApplicationLink
