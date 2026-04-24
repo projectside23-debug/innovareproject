@@ -170,7 +170,7 @@ export function UniversityOpportunitiesBoard() {
     <>
       <section className="page-shell pb-20">
         <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="surface-card rounded-[2rem] p-6 md:p-8">
+          <div className="surface-card order-2 rounded-[2rem] p-6 md:p-8 lg:order-1">
             <p className="eyebrow text-xs text-[var(--ink-soft)]">University Ecosystems</p>
             <h2 className="display-title mt-4 text-4xl font-semibold text-[var(--ink)]">
               Startup help, project-based work, and selective opportunities across campuses.
@@ -209,7 +209,11 @@ export function UniversityOpportunitiesBoard() {
               ))}
             </div>
 
-            <div className="mt-8 grid gap-3">
+            <p className="mt-4 text-xs uppercase tracking-[0.18em] text-[var(--ink-soft)] md:hidden">
+              Use the chips above to jump between ecosystems.
+            </p>
+
+            <div className="mt-8 hidden gap-3 md:grid">
               {ecosystemSeedData.map((ecosystem) => {
                 const count = allOpportunities.filter(
                   (opportunity) => opportunity.ecosystemId === ecosystem.id
@@ -263,7 +267,7 @@ export function UniversityOpportunitiesBoard() {
             </div>
           </div>
 
-          <div className="surface-card rounded-[2rem] p-6 md:p-8">
+          <div className="surface-card order-1 rounded-[2rem] p-6 md:p-8 lg:order-2">
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <p className="eyebrow text-xs text-[var(--ink-soft)]">Opportunity Board</p>

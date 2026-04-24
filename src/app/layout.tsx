@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-[var(--background)] text-[var(--ink)] antialiased">
         <div className="relative isolate overflow-hidden">
           <SiteNavbar />
-          <main>{children}</main>
+          <main className="pb-28 md:pb-0">{children}</main>
           <SiteFooter />
         </div>
         <Analytics />

@@ -16,10 +16,12 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${alignment}`}>
       <p className="eyebrow text-xs text-[var(--ink-soft)]">{eyebrow}</p>
-      <h2 className="display-title mt-4 text-4xl font-semibold text-[var(--ink)] md:text-5xl">
+      <h2 className="display-title mt-3 text-3xl font-semibold text-[var(--ink)] md:mt-4 md:text-5xl">
         {title}
       </h2>
-      <p className="mt-4 text-base leading-7 text-[var(--ink-soft)] md:text-lg">{description}</p>
+      <p className="mt-3 text-sm leading-6 text-[var(--ink-soft)] md:mt-4 md:text-lg md:leading-7">
+        {description}
+      </p>
     </div>
   );
 }

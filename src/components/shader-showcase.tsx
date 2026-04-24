@@ -6,29 +6,29 @@ import { WebGLShader } from "@/components/ui/web-gl-shader";
 
 export function ShaderShowcase() {
   return (
-    <section className="relative overflow-hidden bg-[#071426] py-16 text-white shadow-[0_34px_100px_rgba(7,20,38,0.18)] md:py-20">
+    <section className="relative overflow-hidden bg-[#071426] py-10 text-white shadow-[0_34px_100px_rgba(7,20,38,0.18)] md:py-20">
       <WebGLShader />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_22%,rgba(217,141,76,0.16),transparent_24%),linear-gradient(180deg,rgba(7,20,38,0.18),rgba(7,20,38,0.94))]" />
-      <div className="relative z-10 mx-auto max-w-6xl px-5 text-center md:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 text-center md:px-8">
         <p className="eyebrow text-xs text-[rgba(255,255,255,0.58)]">Live layer</p>
-        <h2 className="display-title mx-auto mt-4 max-w-4xl text-5xl font-semibold leading-[0.95] text-white md:text-7xl">
+        <h2 className="display-title mx-auto mt-3 max-w-4xl text-3xl font-semibold leading-[0.96] text-white md:mt-4 md:text-7xl">
           Discovery should feel
           <span className="block bg-[linear-gradient(90deg,#d98d4c_0%,#dfc16c_38%,#9dd8eb_100%)] bg-clip-text text-transparent">
             alive, useful, and in motion.
           </span>
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[rgba(255,255,255,0.68)] md:text-base">
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[rgba(255,255,255,0.68)] md:mt-5 md:text-base md:leading-7">
           A moving research layer for firms, projects, outreach, and university startups, built to turn curiosity into action.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 md:mt-8">
           <Link
-            className="rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(4,12,18,0.76)] px-7 py-3 text-sm font-semibold text-white shadow-[0_0_28px_rgba(140,201,219,0.22)] transition hover:-translate-y-0.5 hover:bg-[rgba(9,28,42,0.9)]"
+            className="rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(4,12,18,0.76)] px-5 py-2.5 text-xs font-semibold text-white shadow-[0_0_28px_rgba(140,201,219,0.22)] transition hover:-translate-y-0.5 hover:bg-[rgba(9,28,42,0.9)] md:px-7 md:py-3 md:text-sm"
             href="/industry"
           >
             Open database
           </Link>
           <Link
-            className="rounded-full bg-[#2d7ff0] px-7 py-3 text-sm font-semibold text-white shadow-[0_0_28px_rgba(45,127,240,0.26)] transition hover:-translate-y-0.5 hover:bg-[#246fd4]"
+            className="rounded-full bg-[#2d7ff0] px-5 py-2.5 text-xs font-semibold text-white shadow-[0_0_28px_rgba(45,127,240,0.26)] transition hover:-translate-y-0.5 hover:bg-[#246fd4] md:px-7 md:py-3 md:text-sm"
             href="/crm"
           >
             Open CRM

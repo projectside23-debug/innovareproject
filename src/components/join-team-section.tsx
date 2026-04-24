@@ -153,30 +153,30 @@ export function JoinTeamSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-[linear-gradient(180deg,#10211f_0%,#0d2530_48%,#071426_100%)] py-20 text-white"
+      className="relative overflow-hidden bg-[linear-gradient(180deg,#10211f_0%,#0d2530_48%,#071426_100%)] py-12 text-white md:py-20"
       id="contact"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_32%,rgba(140,201,219,0.16),transparent_24%),radial-gradient(circle_at_18%_12%,rgba(217,141,76,0.12),transparent_22%),linear-gradient(180deg,transparent_0%,rgba(7,20,38,0.78)_100%)]" />
       <div className="page-shell relative z-10">
-        <div className="grid gap-10 xl:grid-cols-[0.9fr_0.82fr_0.62fr] xl:items-center">
+        <div className="grid gap-6 md:gap-8 xl:grid-cols-[0.9fr_0.82fr_0.62fr] xl:items-center">
           <div className="max-w-4xl xl:order-1 xl:max-w-none">
             <p className="eyebrow text-xs text-[rgba(255,255,255,0.64)]">Contact / Join our team</p>
-            <h2 className="display-title mt-5 text-4xl font-semibold text-white md:text-5xl">
+            <h2 className="display-title mt-3 text-3xl font-semibold text-white md:mt-5 md:text-5xl">
               Join a team that wants to boost entrepreneurship in universities.
             </h2>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-[rgba(255,255,255,0.76)]">
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[rgba(255,255,255,0.76)] md:mt-4 md:text-base md:leading-7">
               We welcome initiative from students, operators, founders, and campus builders who want
               to create stronger startup culture, better opportunities, and more collaboration across
               university ecosystems.
             </p>
             <a
-              className="mt-5 inline-flex rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-2 text-sm font-medium text-white transition hover:bg-[rgba(255,255,255,0.14)]"
+              className="mt-4 inline-flex rounded-full border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-3 py-1.5 text-xs font-medium text-white transition hover:bg-[rgba(255,255,255,0.14)] md:mt-5 md:px-4 md:py-2 md:text-sm"
               href={`mailto:${CONTACT_EMAIL}`}
             >
               {CONTACT_EMAIL}
             </a>
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-2 md:mt-7 md:gap-3">
               <span className="rounded-md border border-[rgba(255,255,255,0.14)] bg-[rgba(255,255,255,0.08)] px-4 py-2 text-xs uppercase tracking-[0.18em] text-[rgba(255,255,255,0.84)]">
                 Students
               </span>
@@ -194,23 +194,23 @@ export function JoinTeamSection() {
 
           <ContactOrbit />
 
-          <div className="border border-[rgba(255,255,255,0.14)] bg-[rgba(5,15,28,0.34)] p-6 shadow-[0_18px_55px_rgba(8,20,30,0.16)] backdrop-blur-xl md:p-7 xl:order-2">
+          <div className="border border-[rgba(255,255,255,0.14)] bg-[rgba(5,15,28,0.34)] p-4 shadow-[0_18px_55px_rgba(8,20,30,0.16)] backdrop-blur-xl md:p-7 xl:order-2">
             {session ? (
               <>
                 <p className="text-xs uppercase tracking-[0.22em] text-[rgba(255,255,255,0.62)]">
                   Signed in / send a message
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">{session.name}</h3>
-                <p className="mt-2 text-sm leading-7 text-[rgba(255,255,255,0.8)]">{session.email}</p>
-                <p className="mt-4 text-sm leading-7 text-[rgba(255,255,255,0.76)]">
+                <h3 className="mt-2 text-xl font-semibold text-white md:mt-3 md:text-2xl">{session.name}</h3>
+                <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.8)] md:leading-7">{session.email}</p>
+                <p className="mt-3 text-sm leading-6 text-[rgba(255,255,255,0.76)] md:mt-4 md:leading-7">
                   Add a note about what you want to build, research, or help with across university ecosystems.
                   Problems and messages can also go directly to {CONTACT_EMAIL}.
                 </p>
 
-                <label className="mt-6 grid gap-2">
+                <label className="mt-4 grid gap-2 md:mt-6">
                   <span className="text-sm text-[rgba(255,255,255,0.78)]">Message</span>
                   <textarea
-                    className="min-h-32 w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(7,20,29,0.38)] px-4 py-3 text-white outline-none transition placeholder:text-[rgba(255,255,255,0.38)] focus:border-[rgba(255,255,255,0.28)]"
+                    className="min-h-24 w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(7,20,29,0.38)] px-4 py-3 text-white outline-none transition placeholder:text-[rgba(255,255,255,0.38)] focus:border-[rgba(255,255,255,0.28)] md:min-h-32"
                     onChange={(event) => setMessage(event.target.value)}
                     placeholder="Tell us what you want to help build, research, or launch."
                     value={message}
@@ -220,28 +220,28 @@ export function JoinTeamSection() {
                 {error ? <p className="mt-4 text-sm text-[#ffd0c4]">{error}</p> : null}
                 {successMessage ? <p className="mt-4 text-sm text-[#cdeee4]">{successMessage}</p> : null}
 
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2 md:mt-7 md:gap-3">
                   <button
-                    className="rounded-md bg-[rgba(7,20,29,0.7)] px-5 py-3 text-sm font-medium text-white transition hover:bg-[rgba(7,20,29,0.86)]"
+                    className="rounded-md bg-[rgba(7,20,29,0.7)] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[rgba(7,20,29,0.86)] md:px-5 md:py-3"
                     onClick={handleContactSubmit}
                     type="button"
                   >
                     Send message
                   </button>
                   <Link
-                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-5 py-3 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)]"
+                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-2.5 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)] md:px-5 md:py-3"
                     href={`mailto:${CONTACT_EMAIL}?subject=Innovare%20message`}
                   >
                     Email directly
                   </Link>
                   <Link
-                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-5 py-3 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)]"
+                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-2.5 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)] md:px-5 md:py-3"
                     href="/universities"
                   >
                     Explore opportunities
                   </Link>
                   <button
-                    className="rounded-md border border-[rgba(255,255,255,0.14)] bg-transparent px-5 py-3 text-sm text-[rgba(255,255,255,0.84)] transition hover:bg-[rgba(255,255,255,0.06)]"
+                    className="rounded-md border border-[rgba(255,255,255,0.14)] bg-transparent px-4 py-2.5 text-sm text-[rgba(255,255,255,0.84)] transition hover:bg-[rgba(255,255,255,0.06)] md:px-5 md:py-3"
                     onClick={handleSignOut}
                     type="button"
                   >
@@ -254,15 +254,15 @@ export function JoinTeamSection() {
                 <p className="text-xs uppercase tracking-[0.22em] text-[rgba(255,255,255,0.62)]">
                   Contact us
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">
+                <h3 className="mt-2 text-xl font-semibold text-white md:mt-3 md:text-2xl">
                   Send your email and a message.
                 </h3>
-                <p className="mt-2 text-sm leading-7 text-[rgba(255,255,255,0.76)]">
+                <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.76)] md:leading-7">
                   Share what you are researching, building, or hoping to contribute. Your note is saved
                   to Neon, and urgent problems can go directly to {CONTACT_EMAIL}.
                 </p>
 
-                <div className="mt-6 grid gap-3">
+                <div className="mt-4 grid gap-3 md:mt-6">
                   <label className="grid gap-2">
                     <span className="text-sm text-[rgba(255,255,255,0.78)]">Name</span>
                     <input
@@ -287,7 +287,7 @@ export function JoinTeamSection() {
                   <label className="grid gap-2">
                     <span className="text-sm text-[rgba(255,255,255,0.78)]">Message</span>
                     <textarea
-                      className="min-h-32 w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(7,20,29,0.38)] px-4 py-3 text-white outline-none transition placeholder:text-[rgba(255,255,255,0.38)] focus:border-[rgba(255,255,255,0.28)]"
+                      className="min-h-24 w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(7,20,29,0.38)] px-4 py-3 text-white outline-none transition placeholder:text-[rgba(255,255,255,0.38)] focus:border-[rgba(255,255,255,0.28)] md:min-h-32"
                       onChange={(event) => setMessage(event.target.value)}
                       placeholder="Tell us what you want to build, research, or help with."
                       value={message}
@@ -298,16 +298,16 @@ export function JoinTeamSection() {
                 {error ? <p className="mt-4 text-sm text-[#ffd0c4]">{error}</p> : null}
                 {successMessage ? <p className="mt-4 text-sm text-[#cdeee4]">{successMessage}</p> : null}
 
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-2 md:mt-7 md:gap-3">
                   <button
-                    className="rounded-md bg-[rgba(7,20,29,0.7)] px-5 py-3 text-sm font-medium text-white transition hover:bg-[rgba(7,20,29,0.86)]"
+                    className="rounded-md bg-[rgba(7,20,29,0.7)] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[rgba(7,20,29,0.86)] md:px-5 md:py-3"
                     onClick={handleContactSubmit}
                     type="button"
                   >
                     Send message
                   </button>
                   <Link
-                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-5 py-3 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)]"
+                    className="rounded-md border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-2.5 text-sm text-white transition hover:bg-[rgba(255,255,255,0.14)] md:px-5 md:py-3"
                     href={`mailto:${CONTACT_EMAIL}?subject=Innovare%20message`}
                   >
                     Email directly
